@@ -4,11 +4,11 @@
 
 # Docker on LUKS-Encrypted Storage for Asustor NAS
 
-Run Docker on LUKS-encrypted storage with web UI management via script-server.
+Run Docker on Asustor without exposing its metadata (images you've installed, status, etc.), with convenient web UI management via script-server. Mouunt and manage remotely without KVM hardware.
 
 ## Why?
 
-Asustor's App Central Docker is unencrypted. Even if you store Docker data in an encrypted Shared Folder, your metadata, images, etc. are all exposed i.e. even if encrypted folders are unmounted, anyone with access can see and manipulate what you're running in Docker.
+Asustor's doesn't support full disk encryption, and App Central Docker is unencrypted. Even if you store Docker data in an encrypted Shared Folder, your metadata, images, etc. are all exposed i.e. even if encrypted folders are unmounted, anyone with access can see and manipulate what you're running in Docker.
 
 **For LUKS container management without Docker**, see [asustor-luks-manager](https://github.com/gooselabz/asustor-luks-manager).
 
