@@ -1,0 +1,27 @@
+{
+  "name": "Asustor LUKS Docker",
+  "script_path": "/volumeX/yourpath/asustor-luks-docker.sh",
+  "description": "LUKS-encrypted Docker management for Asustor NAS",
+  "output_format": "terminal",
+  "parameters": [
+    {
+      "name": "Action",
+      "type": "list",
+      "required": true,
+      "values": ["start", "shutdown", "status", "update"]
+    },
+    {
+      "name": "START: LUKS Passphrase",
+      "type": "text",
+      "secure": true,
+      "required": false,
+      "pass_as": "argument"
+    },
+    {
+      "name": "UPDATE: Version (blank=latest)",
+      "type": "text",
+      "required": false,
+      "pass_as": "argument"
+    }
+  ]
+}
