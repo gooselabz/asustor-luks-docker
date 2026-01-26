@@ -1,0 +1,11 @@
+%administrators ALL=(ALL) NOPASSWD: /usr/builtin/bin/cryptsetup open *
+%administrators ALL=(ALL) NOPASSWD: /usr/builtin/bin/cryptsetup close *
+%administrators ALL=(ALL) NOPASSWD: /bin/mount -t ext4 /dev/mapper/* *
+%administrators ALL=(ALL) NOPASSWD: /bin/umount *
+%administrators ALL=(ALL) NOPASSWD: /bin/umount -l *
+%administrators ALL=(ALL) NOPASSWD: /bin/mkdir -p *
+%administrators ALL=(ALL) NOPASSWD: /bin/pkill *
+%administrators ALL=(ALL) NOPASSWD: __LUKS_MOUNT__/bin/dockerd *
+%administrators ALL=(ALL) NOPASSWD: __LUKS_MOUNT__/bin/containerd *
+%administrators ALL=(ALL) NOPASSWD: /usr/bin/cp *
+%administrators ALL=(ALL) NOPASSWD: /bin/chmod *
