@@ -61,11 +61,11 @@ cmd_start() {
         [ -e "/dev/mapper/$LUKS_DEV" ] || {
             [ -z "$pass" ] && { err "LUKS passphrase required"; return 1; }
             msg "Unlocking LUKS..."
-            echo "$pass" | sudo cryptsetup open "$LUKS_IMG" "$LUKS_DEV" - || { err "Unlock failed"; return 1; }
+            echo "$pass" | sudo env PATH="$PATH" cryptsetup open "$LUKS_IMG" "$LUKS_DEV" - || { err "Unlock failed"; return 1; }
             ok "LUKS unlocked"
         }
         sudo mkdir -p "$LUKS_MOUNT"
-        sudo mount -t ext4 "/dev/mapper/$LUKS_DEV" "$LUKS_MOUNT" || { sudo cryptsetup close "$LUKS_DEV"; err "Mount failed"; return 1; }
+        sudo mount -t ext4 "/dev/mapper/$LUKS_DEV" "$LUKS_MOUNT" || { sudo env PATH="$PATH" cryptsetup close "$LUKS_DEV"; err "Mount failed"; return 1; }
         ok "Mounted $LUKS_MOUNT"
     fi
     
@@ -106,7 +106,7 @@ cmd_shutdown() {
         ok "Unmounted"
     fi
     
-    [ -e "/dev/mapper/$LUKS_DEV" ] && { sudo cryptsetup close "$LUKS_DEV" && ok "LUKS closed"; }
+    [ -e "/dev/mapper/$LUKS_DEV" ] && { sudo env PATH="$PATH" cryptsetup close "$LUKS_DEV" && ok "LUKS closed"; }
     hdr "Shutdown Complete"
 }
 
